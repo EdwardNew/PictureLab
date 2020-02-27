@@ -30,6 +30,39 @@ public class IntArrayWorker
     return count;
   }
   
+  /**
+   * Method to return largest number in array
+   * getLargest() = a.4 question 2
+   */
+  public int getLargest()
+  {
+    int largest = matrix[0][0];
+    for (int row = 0; row < matrix.length; row++)
+    {
+      for (int col = 0; col < matrix[0].length; col++)
+      {
+        if (matrix[row][col]>largest)
+        {
+            largest = matrix[row][col];
+        }
+      }
+    }
+    return largest;
+  }
+  
+  /**
+   * Method to return total of the values in a column
+   * getColTotal() = a.4 question 3
+   */
+  public int getColTotal(int col)
+  {
+    int colTotal=0;
+    for (int i = 0; i < matrix.length; i++)
+    {
+      colTotal+= matrix[i][col];
+    }
+    return colTotal;
+  }
   
   /**
    * Method to return the total 
