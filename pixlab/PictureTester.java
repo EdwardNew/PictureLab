@@ -77,6 +77,42 @@ public class PictureTester
     caterpillar.explore();
   }
   
+  /** Method to test mirrorVerticalRightToLeft */
+  public static void testMirrorVerticalRightToLeft()
+  {
+    Picture caterpillar = new Picture("caterpillar.jpg");
+    caterpillar.explore();
+    caterpillar.mirrorVerticalRightToLeft();
+    caterpillar.explore();
+  }
+  
+  /** Method to test mirrorHorizontal */
+  public static void testMirrorHorizontal()
+  {
+    Picture caterpillar = new Picture("redMotorcycle.jpg");
+    caterpillar.explore();
+    caterpillar.mirrorHorizontal();
+    caterpillar.explore();
+  }
+  
+  /** Method to test mirrorHorizontalBotToTop */
+  public static void testMirrorHorizontalBotToTop()
+  {
+    Picture caterpillar = new Picture("redMotorcycle.jpg");
+    caterpillar.explore();
+    caterpillar.mirrorHorizontalBotToTop();
+    caterpillar.explore();
+  }
+  
+  /** Method to test mirrorDiagonal */
+  public static void testMirrorDiagonal()
+  {
+    Picture caterpillar = new Picture("beach.jpg");
+    caterpillar.explore();
+    caterpillar.mirrorDiagonal();
+    caterpillar.explore();
+  }
+  
   /** Method to test mirrorTemple */
   public static void testMirrorTemple()
   {
@@ -117,8 +153,12 @@ public class PictureTester
     //testKeepOnlyGreen();
     //testNegate();
     //testGrayscale();
-    testFixUnderwater();
+    //testFixUnderwater();
     //testMirrorVertical();
+    //testMirrorVerticalRightToLeft();
+    //testMirrorHorizontal();
+    //testMirrorHorizontalBotToTop();
+    testMirrorDiagonal();
     //testMirrorTemple();
     //testMirrorArms();
     //testMirrorGull();
