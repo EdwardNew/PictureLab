@@ -277,14 +277,13 @@ public class Picture extends SimplePicture
     Pixel[][] pixels = this.getPixels2D();
     Pixel topPixel = null;
     Pixel bottomPixel = null;
-    int width = pixels[0].length;
-    int count =0;
-    for (int col = 0; col < width; col++)
+    int height = pixels.length;
+    for (int col = 0; col < height; col++)
     {
-      for (int row = 0; row < pixels.length / 2; row++)
+      for (int row = 0; row < height; row++)
       {
-        bottomPixel = pixels[pixels.length-1-row][col];
-        topPixel = pixels[row][col];
+        bottomPixel = pixels[row][col];
+        topPixel = pixels[col][row];
         topPixel.setColor(bottomPixel.getColor());
       }
     } 
@@ -298,7 +297,6 @@ public class Picture extends SimplePicture
     Pixel rightPixel = null;
     int count = 0;
     Pixel[][] pixels = this.getPixels2D();
-    
     // loop through the rows
     for (int row = 27; row < 97; row++)
     {
@@ -310,8 +308,46 @@ public class Picture extends SimplePicture
         rightPixel = pixels[row]                       
                          [mirrorPoint - col + mirrorPoint];
         rightPixel.setColor(leftPixel.getColor());
+        count++;
       }
     }
+    System.out.println(count);
+  }
+  
+  /** Mirror just the arms of the Snowman */
+  public void mirrorArms()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    int mirrorPoint = 195;
+    for (int col = 102; col < 296; col++)
+    {
+      for (int row = 164; row < mirrorPoint; row++)
+      {
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[mirrorPoint-row+mirrorPoint][col];
+        bottomPixel.setColor(topPixel.getColor());
+      }
+    } 
+  }
+  
+  /** Mirror the seagull */
+  public void mirrorGull()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    int mirrorPoint = 195;
+    for (int col = 102; col < 296; col++)
+    {
+      for (int row = 164; row < mirrorPoint; row++)
+      {
+        leftPixel = pixels[row][col];
+        rightPixel = pixels[row][width - 1 - col];
+        rightPixel.setColor(leftPixel.getColor());
+      }
+    } 
   }
   
   /** copy from the passed fromPic to the
