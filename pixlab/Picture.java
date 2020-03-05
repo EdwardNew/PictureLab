@@ -338,13 +338,13 @@ public class Picture extends SimplePicture
     Pixel[][] pixels = this.getPixels2D();
     Pixel leftPixel = null;
     Pixel rightPixel = null;
-    int mirrorPoint = 195;
-    for (int col = 102; col < 296; col++)
+    int mirrorPoint = 360;
+    for (int row = 230; row < 330; row++)
     {
-      for (int row = 164; row < mirrorPoint; row++)
+      for (int col = 235; col < mirrorPoint; col++)
       {
         leftPixel = pixels[row][col];
-        rightPixel = pixels[row][width - 1 - col];
+        rightPixel = pixels[row][mirrorPoint-col+mirrorPoint];
         rightPixel.setColor(leftPixel.getColor());
       }
     } 
@@ -381,6 +381,39 @@ public class Picture extends SimplePicture
     }   
   }
 
+  /** copy from the passed fromPic to the
+    * specified startRow, startCol, endRow, and endCol in the
+    * current picture
+    * @param fromPic the picture to copy from
+    * @param startRow the start row to copy to
+    * @param startCol the start col to copy to
+    * @param endRow the end row to copy to
+    * @param endCol the end col to copy to
+    */
+  public void copy(Picture fromPic, 
+                 int startRow, int startCol, int endRow, int endCol)
+  {
+    Pixel fromPixel = null;
+    Pixel toPixel = null;
+    Pixel[][] toPixels = this.getPixels2D();
+    Pixel[][] fromPixels = fromPic.getPixels2D();
+    for (int fromRow = 0, toRow = startRow; 
+         fromRow < fromPixels.length &&
+         toRow < endRow; 
+         fromRow++, toRow++)
+    {
+      for (int fromCol = 0, toCol = startCol; 
+           fromCol < fromPixels[0].length &&
+           toCol < endCol;  
+           fromCol++, toCol++)
+      {
+        fromPixel = fromPixels[fromRow][fromCol];
+        toPixel = toPixels[toRow][toCol];
+        toPixel.setColor(fromPixel.getColor());
+      }
+    }   
+  }
+  
   /** Method to create a collage of several pictures */
   public void createCollage()
   {
@@ -395,6 +428,16 @@ public class Picture extends SimplePicture
     this.copy(flower1,400,0);
     this.copy(flower2,500,0);
     this.mirrorVertical();
+    this.write("collage.jpg");
+  }
+  
+  /** Method to create a collage of several pictures */
+  public void myCollage()
+  {
+    Picture 
+    Picture 
+    Picture 
+    
     this.write("collage.jpg");
   }
   
